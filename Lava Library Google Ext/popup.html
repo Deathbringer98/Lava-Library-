@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Lava Library</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <h1>Lava Library</h1>
-    <button id="sortAll">Sort All Bookmarks</button>
-    <label>
-      <input type="checkbox" id="autoSort">
-      Enable Auto-Sort
-    </label>
-    <script src="popup.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lava Library</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-item active" id="navBookmarks" title="Bookmarks">📚</div>
+    <div class="nav-item" id="navTheme" title="Change Theme">🎨</div>
+    <div class="nav-item" id="navAI" title="AI Tools">🤖</div>
+  </div>
+
+  <div class="content">
+    <!-- Bookmarks Panel -->
+    <div id="bookmarksPanel" class="panel visible">
+      <h2>Organize Your Bookmarks</h2>
+      <p>Lava Library automatically categorizes your bookmarks by website and topic.</p>
+      <button id="sortNow">Sort Now</button>
+    </div>
+
+    <!-- Theme Panel -->
+    <div id="themePanel" class="panel">
+      <h2>Theme Settings</h2>
+      <div class="theme-slider-container">
+        <span>🌞</span>
+        <label class="switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="slider"></span>
+        </label>
+        <span>🌙</span>
+      </div>
+      <p>Your theme preference is saved automatically.</p>
+    </div>
+
+    <!-- AI Panel -->
+    <div id="aiPanel" class="panel">
+      <h2>AI Categorization (Pro)</h2>
+      <p>Upgrade to unlock AI-based smart tagging and suggestions.</p>
+      <button class="pro-btn">Upgrade to Pro</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
 </html>
