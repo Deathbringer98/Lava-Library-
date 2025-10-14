@@ -29,4 +29,12 @@ and auto-sorts your bookmarks into organized folders — all **locally**, with *
 ---
 
 ## 🧩 Architecture Overview
-
+lava-library/
+├── manifest.json # Permissions + service worker
+├── background.js # Sorting logic + automation
+├── popup.html # Main UI
+├── popup.js # Theme + sorting actions
+├── styles.css # Modern 2025 styling
+├── icons/ # 16/48/128px volcano icons
+├── categories.json # (future) externalized category map
+└── assets/ # (future) branding + promo shots
