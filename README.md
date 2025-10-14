@@ -21,7 +21,7 @@ and auto-sorts your bookmarks into organized folders — all **locally**, with *
 | Manifest V3 | ✅ | Configured with bookmarks + storage permissions |
 | Popup UI | ✅ | 3-tab modern interface (Bookmarks / Theme / AI placeholder) |
 | Theme toggle | ✅ | Dark / light mode with persistent storage |
-| Icons | ✅ | Cartoony volcano icon in 16/48/128 px |
+| Icons | ✅ | icon in 16/48/128 px |
 | Sorting engine | ⚙️ | Working on full bookmark tree sort |
 | Auto-sort toggle | 🔜 | Planned for next phase |
 | AI categorization | 🚧 | Future Pro tier feature |
