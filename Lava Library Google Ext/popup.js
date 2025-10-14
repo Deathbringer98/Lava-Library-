@@ -49,3 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(saved, false);
   });
 });
+
+// Sort all bookmarks when "Sort Now" clicked
+document.getElementById("sortNow").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "sortAllBookmarks" }, (response) => {
+    if (response?.success) {
+      console.log("Bookmarks sorted successfully!");
+    } else {
+      console.error("Sorting failed or no response.");
+    }
+  });
+});
+
