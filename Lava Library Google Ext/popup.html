@@ -6,11 +6,14 @@
   <title>Lava Library</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="navbar">
-    <div class="nav-item active" id="navBookmarks" title="Bookmarks">📚</div>
-    <div class="nav-item" id="navTheme" title="Change Theme">🎨</div>
-    <div class="nav-item" id="navAI" title="AI Tools">🤖</div>
+<body class="light">
+  <div class="tab-header">
+    <div class="navbar">
+      <div class="nav-item active" id="navBookmarks" title="Bookmarks">📚</div>
+      <div class="nav-item" id="navTheme" title="Change Theme">🎨</div>
+      <div class="nav-item" id="navAI" title="AI Tools">🤖</div>
+      <div class="nav-item" id="navSupport" title="Support">💖</div>
+    </div>
   </div>
 
   <div class="content">
@@ -18,7 +21,54 @@
     <div id="bookmarksPanel" class="panel visible">
       <h2>Organize Your Bookmarks</h2>
       <p>Lava Library automatically categorizes your bookmarks by website and topic.</p>
-      <button id="sortNow">Sort Now</button>
+
+      <div class="row">
+        <button id="sortNow" title="Sort all bookmarks into organized folders">Sort Now</button>
+      </div>
+
+      <div class="toggle-row">
+        <input type="checkbox" id="autoSortToggle" />
+        <label for="autoSortToggle">Auto-sort when saving a bookmark</label>
+      </div>
+      <div class="toggle-row">
+        <input type="checkbox" id="alarmToggle" />
+        <label for="alarmToggle">Auto-sync every 30 minutes</label>
+      </div>
+
+      <div class="stat" id="statsRow" title="Last run stats will appear here."></div>
+
+      <h3 class="library-title">Library</h3>
+      <div class="library-buttons">
+  <button id="btnNewFolder" class="mini-btn" title="Create a new custom folder">📁 Add Folder</button>
+  <button id="addLinkBtn" class="mini-btn" title="Add a website to a folder">🔗 Add Link</button>
+  <button id="btnDefaults" class="mini-btn secondary" title="Add standard category folders">⚙️ Add Default Folders</button>
+  <button id="btnDeleteMode" class="mini-btn danger" title="Enable delete mode to remove multiple items">🗑 Delete Mode</button>
+</div>
+<div id="deleteBar" class="delete-bar" style="display:none;">
+  <button id="btnConfirmDelete" class="mini-btn danger" title="Delete all selected folders and bookmarks">Delete Selected</button>
+</div>
+
+      <!-- Add Link Modal -->
+      <div id="addLinkModal" class="modal hidden">
+        <div class="modal-content">
+          <h3>Add Website to Folder</h3>
+          <label for="linkUrl">Website URL:</label>
+          <input type="text" id="linkUrl" placeholder="https://example.com">
+          
+          <label for="linkTitle">Name (optional):</label>
+          <input type="text" id="linkTitle" placeholder="Example Site">
+          
+          <label for="linkFolder">Select Folder:</label>
+          <select id="linkFolder"></select>
+
+          <div class="modal-actions">
+            <button id="saveLinkBtn">Add</button>
+            <button id="cancelLinkBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="bookmarkTree" class="tree-container" aria-live="polite"></div>
     </div>
 
     <!-- Theme Panel -->
@@ -27,21 +77,69 @@
       <div class="theme-slider-container">
         <span>🌞</span>
         <label class="switch">
-          <input type="checkbox" id="themeToggle">
+          <input type="checkbox" id="themeToggle" title="Toggle theme">
           <span class="slider"></span>
         </label>
         <span>🌙</span>
       </div>
-      <p>Your theme preference is saved automatically.</p>
+      <p>Your preferences are saved locally.</p>
     </div>
 
     <!-- AI Panel -->
     <div id="aiPanel" class="panel">
       <h2>AI Categorization (Pro)</h2>
-      <p>Upgrade to unlock AI-based smart tagging and suggestions.</p>
-      <button class="pro-btn">Upgrade to Pro</button>
+      <p>Upgrade to Pro – Feature in Development</p>
+      <button class="pro-btn" disabled>Upgrade to Pro — Feature in Development</button>
+    </div>
+
+    <!-- Support Panel -->
+    <div id="supportPanel" class="panel">
+      <h2>Support Lava Library</h2>
+      <p>If you enjoy Lava Library and want to help keep it free and updated, you can support future development with crypto donations:</p>
+
+      <div class="donation-box">
+        <div>
+          <strong>Bitcoin (BTC):</strong>
+          <span id="btcAddress">bc1qyltmkrpjywkjkt68t8ms32l58pkqrgcxwhh9m0</span>
+          <button class="copy-btn" data-target="btcAddress">Copy</button>
+        </div>
+        <div>
+          <strong>Ethereum (ETH):</strong>
+          <span id="ethAddress">0x73E5a7beE1BF937598FD769f98F9061b83Edaef8</span>
+          <button class="copy-btn" data-target="ethAddress">Copy</button>
+        </div>
+
+        <!-- NEW: Contact row -->
+        <div class="contact-row">
+          <strong>Contact:</strong>
+          <span id="contactEmail">deathadder90@protonmail.com</span>
+          <button class="copy-btn" data-target="contactEmail">Copy</button>
+          <a class="email-link" href="mailto:deathadder90@protonmail.com" rel="noopener">Email</a>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-secondary);margin-top:8px;">
+        Every donation helps me continue improving Lava Library — thank you for your support!
+      </p>
     </div>
   </div>
+
+  <!-- Global Progress Indicator -->
+  <div id="progressContainer" style="display:none;">
+    <div id="progressText">Preparing bookmarks...</div>
+    <div id="progressBarOuter"><div id="progressBarInner"></div></div>
+  </div>
+
+  <!-- Context menu for folder actions -->
+  <div id="contextMenu" class="context-menu hidden">
+    <div class="menu-item" data-action="new-folder">📁 New folder</div>
+    <div class="menu-item" data-action="rename">✏️ Rename</div>
+    <div class="menu-item danger" data-action="delete">🗑️ Delete</div>
+  </div>
+
+  <footer id="footer">
+    <small id="versionDisplay"></small>
+  </footer>
 
   <script src="popup.js"></script>
 </body>
