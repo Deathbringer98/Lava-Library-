@@ -19,25 +19,15 @@
   <div class="content">
     <!-- Bookmarks Panel -->
     <div id="bookmarksPanel" class="panel visible">
-      <h2>Organize Your Bookmarks</h2>
-      <p>Lava Library automatically categorizes your bookmarks by website and topic.</p>
-
-      <div class="row">
-        <button id="sortNow" title="Sort all bookmarks into organized folders">Sort Now</button>
+      <div class="header-section">
+        <h2>Organize Your Bookmarks</h2>
+        <p id="libraryInfo" class="library-info">Lava Library, categorizes your bookmarks by website and topic.</p>
       </div>
-
-      <div class="toggle-row">
-        <input type="checkbox" id="autoSortToggle" />
-        <label for="autoSortToggle">Auto-sort when saving a bookmark</label>
-      </div>
-      <div class="toggle-row">
-        <input type="checkbox" id="alarmToggle" />
-        <label for="alarmToggle">Auto-sync every 30 minutes</label>
-      </div>
-
-      <div class="stat" id="statsRow" title="Last run stats will appear here."></div>
+      <button id="toggleInfo" class="info-toggle" title="Show/hide header section">ℹ️</button>
 
       <h3 class="library-title">Library</h3>
+      <div id="bookmarkTree" class="tree-container" aria-live="polite"></div>
+
       <div class="library-buttons">
   <button id="btnNewFolder" class="mini-btn" title="Create a new custom folder">📁 Add Folder</button>
   <button id="addLinkBtn" class="mini-btn" title="Add a website to a folder">🔗 Add Link</button>
@@ -68,7 +58,20 @@
         </div>
       </div>
 
-      <div id="bookmarkTree" class="tree-container" aria-live="polite"></div>
+      <div class="row">
+        <button id="sortNow" title="Sort all bookmarks into organized folders">Sort Now</button>
+      </div>
+
+      <div class="toggle-row">
+        <input type="checkbox" id="autoSortToggle" />
+        <label for="autoSortToggle">Auto-sort when saving a bookmark</label>
+      </div>
+      <div class="toggle-row">
+        <input type="checkbox" id="alarmToggle" />
+        <label for="alarmToggle">Auto-sync every 30 minutes</label>
+      </div>
+
+      <div class="stat" id="statsRow" title="Last run stats will appear here."></div>
     </div>
 
     <!-- Theme Panel -->

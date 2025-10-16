@@ -73,7 +73,7 @@ document.getElementById("sortNow").onclick=()=>chrome.runtime.sendMessage({actio
 
 // ------- Icons for top categories -------
 const CAT_ICONS = {
-  "Social Media":"🌐","Blogs":"✍️","News":"📰","Finance":"💰","Entertainment":"🎬",
+  "Music":"🎵","Social Media":"🌐","Blogs":"✍️","News":"📰","Health":"❤","Finance":"💰","Work Flow":"🧐","Entertainment":"🎬",
   "Games":"🎮","Forums":"💬","Other":"📁"
 };
 
@@ -195,21 +195,36 @@ function renderFolder(folder, state){
       // ✅ Finish + animate rename confirmation
       const finish = async (save) => {
         const newName = save ? input.value.trim() : currentTitle;
-        if (newName !== currentTitle) {
-          await chrome.runtime.sendMessage({ action: "renameNode", id: folder.id, title: newName });
-          await renderTree();
+        if (save && newName && newName !== currentTitle) {
+          try {
+            const response = await chrome.runtime.sendMessage({ action: "renameNode", id: folder.id, title: newName });
+            if (response?.success) {
+              // Update the folder object's title for immediate feedback
+              folder.title = newName;
+              await renderTree();
 
-          // highlight renamed folder briefly
-          const allTitles = document.querySelectorAll(".folder-title");
-          for (const el of allTitles) {
-            if (el.textContent.trim().includes(newName)) {
-              el.classList.add("folder-renamed");
-              setTimeout(() => el.classList.remove("folder-renamed"), 900);
-              break;
+              // highlight renamed folder briefly
+              setTimeout(() => {
+                const allTitles = document.querySelectorAll(".folder-title");
+                for (const el of allTitles) {
+                  const titleText = el.textContent.replace(/^📁\s*/, ''); // Remove folder emoji
+                  if (titleText === newName) {
+                    el.classList.add("folder-renamed");
+                    setTimeout(() => el.classList.remove("folder-renamed"), 900);
+                    break;
+                  }
+                }
+              }, 100); // Small delay to ensure DOM update
+            } else {
+              console.error("Failed to rename folder");
+              renderTree(); // revert on failure
             }
+          } catch (error) {
+            console.error("Error renaming folder:", error);
+            renderTree(); // revert on error
           }
         } else {
-          renderTree(); // no change
+          renderTree(); // no change or cancelled
         }
       };
 
@@ -260,7 +275,16 @@ menu.addEventListener("click", async (e) => {
     if (name) await chrome.runtime.sendMessage({ action:"createFolder", parentId: menuFolderId, name });
   } else if (action === "rename") {
     const name = prompt("New name:");
-    if (name) await chrome.runtime.sendMessage({ action:"renameNode", id: menuFolderId, title: name });
+    if (name && name.trim()) {
+      try {
+        const response = await chrome.runtime.sendMessage({ action:"renameNode", id: menuFolderId, title: name.trim() });
+        if (!response?.success) {
+          console.error("Failed to rename folder");
+        }
+      } catch (error) {
+        console.error("Error renaming folder:", error);
+      }
+    }
   } else if (action === "delete") {
     if (confirm("Delete this folder and all of its contents?")) {
       await chrome.runtime.sendMessage({ action:"deleteNode", id: menuFolderId });
@@ -272,6 +296,28 @@ menu.addEventListener("click", async (e) => {
 
 // Initial render
 renderTree();
+
+// ---- Info toggle button ----
+document.getElementById("toggleInfo")?.addEventListener("click", () => {
+  const headerSection = document.querySelector(".header-section");
+  const isHidden = headerSection.classList.contains("hidden");
+  
+  if (isHidden) {
+    headerSection.classList.remove("hidden");
+  } else {
+    headerSection.classList.add("hidden");
+  }
+  
+  // Save preference to storage
+  chrome.storage.local.set({ headerHidden: !isHidden });
+});
+
+// Load header visibility preference on startup
+chrome.storage.local.get(['headerHidden'], (result) => {
+  if (result.headerHidden) {
+    document.querySelector(".header-section")?.classList.add("hidden");
+  }
+});
 
 // ---- Library control buttons ----
 document.getElementById("btnNewFolder")?.addEventListener("click", async () => {
@@ -287,7 +333,9 @@ document.getElementById("btnDefaults")?.addEventListener("click", async () => {
     "Social Media",
     "Forums",
     "News",
+    "Health",
     "Finance",
+    "Work Flow",
     "Blogs",
     "Entertainment",
     "Games",

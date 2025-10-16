@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Lava Library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "organizes your bookmarks by website and topic. Local-first, privacy-friendly.",
   "action": { "default_popup": "popup.html" },
-  "permissions": ["bookmarks", "storage", "alarms", "downloads"],
+  "permissions": ["bookmarks", "storage", "alarms"],
   "host_permissions": [],
   "background": { "service_worker": "background.js" },
   "icons": {
