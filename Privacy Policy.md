@@ -1,28 +1,51 @@
 # Lava Library – Privacy Policy
-**Effective Date:** October 13, 2025
 
-Lava Library is a Chrome extension developed by **Deathbringer98 (Matthew Menchinton)**.
+**Last updated:** October 2025  
 
-## Data Collection
-This extension does **not** collect, transmit, or share any personal data.  
-All functionality (bookmark organization, theme preferences, and settings) operates locally within your browser.
+This Privacy Policy applies solely to **Lava Library**, a Chrome extension developed by **Deathbringer98 (Matthew Menchinton)**.  
+Lava Library is designed with privacy in mind and operates entirely on your local device.  
+It does **not** collect, transmit, or share any personal information.
 
-## Data Usage
-- No personal or browsing data is collected.  
-- No analytics or tracking services are used.  
-- All data (such as theme preference) is stored locally using Chrome’s `storage.local` API.
+---
 
-## Permissions
-Lava Library requests the following permissions:
-- **Bookmarks:** To organize and display bookmarks.  
-- **Storage:** To save theme and configuration settings locally.  
-- **Alarms:** For optional periodic auto-sorting.  
-- **Downloads:** To export user-created bookmark backups when requested.
+## 🔒 Data Collection
+Lava Library does **not** collect, store, or transmit any user data to external servers or third parties.  
+All actions and settings are processed and saved locally within your browser.
 
-## Contact
-If you have questions or feedback, contact:  
+The extension does **not** use:
+- Analytics or tracking services  
+- Advertising networks  
+- Cloud storage or remote APIs  
+
+All data remains fully under the user’s control.
+
+---
+
+## ⚙️ Permissions Used
+
+- **`bookmarks`** – Enables creating, renaming, deleting, and organizing bookmarks within Chrome’s built-in bookmark system.  
+- **`storage`** – Used to save user preferences such as theme (light/dark), auto-sync interval, and layout settings locally.  
+- **`alarms`** – Used to trigger periodic automatic sorting and syncing of bookmarks according to user-defined intervals.  
+
+These permissions are essential for Lava Library’s core functionality and are never used for tracking or analytics.
+
+---
+
+## 🧩 Remote Code
+Lava Library does **not** use or execute remote code.  
+All JavaScript, CSS, and HTML files are fully packaged within the extension and run locally.  
+No external scripts, modules, or network requests are made.
+
+---
+
+## 💬 Feedback & Support
+If you encounter bugs, wish to report an issue, or have suggestions for improvement, please contact:  
 📧 **deathadder90@protonmail.com**
 
 ---
 
-© 2025 **Deathbringer98 (Matthew Menchinton)**. All rights reserved.
+## 🪶 Summary
+Lava Library is a **local-first, privacy-friendly bookmark manager**.  
+Your data never leaves your browser — no servers, no telemetry, and no tracking.  
+
+By using Lava Library, you can trust that your bookmarks and preferences remain completely private and secure on your device.
