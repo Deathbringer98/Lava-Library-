@@ -14,7 +14,7 @@ and auto-sorts your bookmarks into organized folders — all **locally**, with *
 
 ---
 
-## 🧱 Current Status (v1.0 Development)
+## 🧱 Current Status (v1.0.2 Development)
 
 | Component | Status | Description |
 |------------|--------|-------------|
