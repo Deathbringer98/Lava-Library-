@@ -1,0 +1,55 @@
+Lava Library – Smart Bookmark Manager
+Copyright (c) 2025 Matthew Menchinton (Deathbringer98)
+All Rights Reserved.
+
+---
+
+1. Grant of Permission
+You are permitted to install and use the Lava Library Chrome extension ("Software")
+for personal and commercial purposes free of charge.
+
+This license grants usage rights only. No ownership or intellectual property rights
+are transferred to the end user.
+
+---
+
+2. Restrictions
+You may NOT:
+- Modify, reverse engineer, decompile, or redistribute any part of the Software.
+- Sell, sublicense, or repackage the Software under your own name or brand.
+- Use the Software or its assets to train machine learning models or automated systems.
+- Claim ownership or authorship of the Software or its design, branding, or code.
+
+---
+
+3. Ownership
+All rights, title, and interest in the Software—including source code, images,
+logos, and written materials—remain the exclusive property of
+Matthew Menchinton (Deathbringer98).
+
+---
+
+4. Disclaimer of Warranty
+The Software is provided "AS IS" without warranty of any kind, express or implied,
+including but not limited to the warranties of merchantability, fitness for a
+particular purpose, and non-infringement.
+
+In no event shall the author or copyright holder be liable for any claim, damages,
+or other liability arising from the use of the Software.
+
+---
+
+5. Updates and Modifications
+Future updates, features, or paid upgrades (including AI auto-organization)
+may be released under separate or modified licensing terms.
+
+---
+
+6. Contact
+For licensing inquiries, permissions, or business collaboration:
+Email: deathadder90@protonmail.com
+GitHub: https://github.com/Deathbringer98
+
+---
+
+End of License
